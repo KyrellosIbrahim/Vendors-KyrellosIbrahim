@@ -8,7 +8,7 @@ public class VendorTest {
 
     @BeforeEach
     void setUp() {
-        v = new Vending(0, 0);
+        v = new Vending(5, 5);
     }
 
     @Test
@@ -28,10 +28,19 @@ public class VendorTest {
     }
     @Test
     void emptyInventory() {
-        (v.Stock.get("Candy")).stock = 0;
-        (v.Stock.get("Gum")).stock = 0;
-        assertEquals(0, (v.Stock.get("Candy")).stock);
-        assertEquals(0, (v.Stock.get("Gum")).stock);
+        (Vending.Stock.get("Candy")).stock = 0;
+        (Vending.Stock.get("Gum")).stock = 0;
+        assertEquals(0, (Vending.Stock.get("Candy")).stock);
+        assertEquals(0, (Vending.Stock.get("Gum")).stock);
+    }
+    @Test
+    void restockItems() {
+        int preCandyStock = Vending.Stock.get("Candy").stock;
+        int preGumStock = Vending.Stock.get("Gum").stock;
+        Vending.Stock.get("Candy").restock(10);
+        Vending.Stock.get("Gum").restock(5);
+        assertEquals(preCandyStock + 10, Vending.Stock.get("Candy").stock);
+        assertEquals(preGumStock + 5, Vending.Stock.get("Gum").stock);
     }
 
 }
