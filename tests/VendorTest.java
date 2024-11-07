@@ -20,6 +20,11 @@ public class VendorTest {
         v.addMoney(1.0);
         assertEquals(1.0, v.getBalance());
     }
-
+    @Test
+    void buyCandy() {
+        v.addMoney(1.25);
+        v.select("Candy");
+        assertEquals(0.0, v.getBalance());
+    }
 
 }
