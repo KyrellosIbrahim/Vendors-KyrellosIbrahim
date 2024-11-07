@@ -26,5 +26,12 @@ public class VendorTest {
         v.select("Candy");
         assertEquals(0.0, v.getBalance());
     }
+    @Test
+    void emptyInventory() {
+        (v.Stock.get("Candy")).stock = 0;
+        (v.Stock.get("Gum")).stock = 0;
+        assertEquals(0, (v.Stock.get("Candy")).stock);
+        assertEquals(0, (v.Stock.get("Gum")).stock);
+    }
 
 }
