@@ -6,13 +6,18 @@ import java.util.HashMap;
  * well as the current balance of money that has been deposited into the machine.
  */
 class Vending {
-    public static HashMap<String, Item> Stock = new HashMap<String,Item>();
+    public static HashMap<String, Item> Stock = new HashMap<>();
     private double balance;
+    private String vendorName;
 
-    Vending(int numCandy, int numGum) {
+    Vending(int numCandy, int numGum, String vendorName) {
+        this.vendorName = vendorName;
         Stock.put("Candy", new Item(1.25, numCandy));
         Stock.put("Gum", new Item(.5, numGum));
         this.balance = 0;
+    }
+    public String getVendorName() {
+        return vendorName;
     }
 
     /** resets the Balance to 0 */
@@ -84,6 +89,24 @@ class Vending {
             Stock.put(newName, Stock.get(oldName));
             Stock.remove(oldName);
         }
+    }
+    /**
+     * returns a string listing the current stock of the vendor
+     */
+    String listInventory() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(vendorName + "'s" + " stock:\n");
+        for(String key : Stock.keySet()) {
+            sb.append(key + " " + Stock.get(key).stock + "\n");
+        }
+        return sb.toString();
+    }
+
+    /**
+     * prints the current stock of the vendor to the console
+     */
+    void consoleLogInventory() {
+        System.out.println(listInventory());
     }
 }
 

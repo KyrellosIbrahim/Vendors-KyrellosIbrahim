@@ -1,15 +1,14 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class VendorTest {
     static Vending v;
 
     @BeforeEach
     void setUp() {
-        v = new Vending(5, 5);
+        v = new Vending(5, 5, "Vendor1");
     }
 
     @Test
@@ -57,5 +56,19 @@ public class VendorTest {
         assertEquals(price, Vending.Stock.get("KitKat").price);
         assertEquals(quantity, Vending.Stock.get("KitKat").stock);
     }
-
+    @Test
+    void multipleVendors() {
+        Vending v2 = new Vending(10, 10, "Vendor2");
+        Vending v3 = new Vending(15, 15, "Vendor3");
+        Vending v4 = new Vending(20, 20, "Vendor4");
+        Vending v5 = new Vending(25, 25, "Vendor5");
+        v2.addMoney(1.0);
+        v3.addMoney(15.0);
+        v4.addMoney(400.0);
+        v5.addMoney(0.25);
+        assertNotEquals(v.listInventory(), v2.listInventory());
+        assertNotEquals(v2.listInventory(), v3.listInventory());
+        assertNotEquals(v3.listInventory(), v4.listInventory());
+        assertNotEquals(v4.listInventory(), v5.listInventory());
+    }
 }
