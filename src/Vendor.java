@@ -1,6 +1,5 @@
 import java.util.HashMap;
-import java.util.LinkedList;
-
+import java.util.HashSet;
 
 /**
  * Class for a Vending Machine.  Contains a hashtable mapping item names to item data, as
@@ -11,6 +10,7 @@ class Vending {
     public HashMap<String, Integer> purchaseHistory;
     private double balance;
     private String vendorName;
+    public HashSet<String> bestSellers = new HashSet<>();
 
     Vending(int numCandy, int numGum, String vendorName) {
         this.vendorName = vendorName;
@@ -125,6 +125,20 @@ class Vending {
         if(discountPercentage > 0.0 && discountPercentage < 1.0) {
             Stock.get(itemName).price = Stock.get(itemName).price * (1 - discountPercentage);
         }
+    }
+    /**
+     * adds an item to the bestSeller list
+     */
+    public void markBestSeller(String itemName) {
+        if(Stock.containsKey(itemName)) {
+            bestSellers.add(itemName);
+        }
+    }
+    /**
+     * removes an item from the bestSeller list
+     */
+    public void unmarkBestSeller(String itemName) {
+        bestSellers.remove(itemName);
     }
 }
 

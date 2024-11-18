@@ -95,4 +95,9 @@ public class VendorTest {
         v.discount("Candy", 0.2);
         assertEquals(1.0, Vending.Stock.get("Candy").price);
     }
+    @Test
+    void bestSellerItems() {
+        v.markBestSeller("Candy");
+        assertTrue(v.bestSellers.contains("Candy"));
+    }
 }
