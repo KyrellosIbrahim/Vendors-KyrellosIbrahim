@@ -1,7 +1,8 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class VendorTest {
     static Vending v;
@@ -45,6 +46,16 @@ public class VendorTest {
     void AddItemWithRestock() {
         v.addNewOrRestock("Honey Bun", 5, 2.50);
         assertEquals(5, Vending.Stock.get("Honey Bun").stock);
+    }
+    @Test
+    void renameItem() {
+        double price = Vending.Stock.get("Candy").price;
+        int quantity = Vending.Stock.get("Candy").stock;
+        v.renameItem("Candy", "KitKat");
+        assertFalse(Vending.Stock.containsKey("Candy"));
+        assertTrue(Vending.Stock.containsKey("KitKat"));
+        assertEquals(price, Vending.Stock.get("KitKat").price);
+        assertEquals(quantity, Vending.Stock.get("KitKat").stock);
     }
 
 }

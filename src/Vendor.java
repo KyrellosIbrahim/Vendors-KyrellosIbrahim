@@ -59,12 +59,30 @@ class Vending {
         }
     }
 
+    /**
+     * either adds a new item to the vending machine, or restocks an existing item
+     * @param itemName name of item to stock/restock
+     * @param amount number of items to restock
+     * @param price price of new item
+     */
     void addNewOrRestock(String itemName, int amount, double price) {
         if (Stock.containsKey(itemName)) {
             Stock.get(itemName).restock(amount);
         }
         else {
             Stock.put(itemName, new Item(price, amount));
+        }
+    }
+
+    /**
+     * renames an item in the vending machine
+     * @param oldName name of item to be renamed
+     * @param newName new name for the item
+     */
+    void renameItem(String oldName, String newName) {
+        if (Stock.containsKey(oldName)) {
+            Stock.put(newName, Stock.get(oldName));
+            Stock.remove(oldName);
         }
     }
 }
