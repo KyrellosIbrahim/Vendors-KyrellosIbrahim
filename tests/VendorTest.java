@@ -71,4 +71,9 @@ public class VendorTest {
         assertNotEquals(v3.listInventory(), v4.listInventory());
         assertNotEquals(v4.listInventory(), v5.listInventory());
     }
+    @Test
+    void removeItem() {
+        v.removeItem("Candy");
+        assertFalse(Vending.Stock.containsKey("Candy"));
+    }
 }

@@ -108,6 +108,12 @@ class Vending {
     void consoleLogInventory() {
         System.out.println(listInventory());
     }
+    /**
+     * removes an item from the vending machine
+     */
+    void removeItem(String itemName) {
+        Stock.remove(itemName);
+    }
 }
 
 class Examples {
