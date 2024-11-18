@@ -90,4 +90,9 @@ public class VendorTest {
         assertEquals("A sweet and delicious treat! \nPrice: 1.25", Vending.Stock.get("Candy").getDescription());
         assertEquals("For those less than fresh moments. \nPrice: 0.5", Vending.Stock.get("Gum").getDescription());
     }
+    @Test
+    void discountItem() {
+        v.discount("Candy", 0.2);
+        assertEquals(1.0, Vending.Stock.get("Candy").price);
+    }
 }

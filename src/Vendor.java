@@ -19,9 +19,6 @@ class Vending {
         this.balance = 0;
         this.purchaseHistory = new HashMap<>();
     }
-    public String getVendorName() {
-        return vendorName;
-    }
 
     /** resets the Balance to 0 */
     void resetBalance () {
@@ -118,11 +115,16 @@ class Vending {
     void removeItem(String itemName) {
         Stock.remove(itemName);
     }
+
     /**
-     * returns the description of the item
+     * discounts an item by a certain percentage
+     * @param itemName the name of the item to be discounted
+     * @param discountPercentage the percentage to discount the item by
      */
-    String getItemDescription(String itemName) {
-        return Stock.get(itemName).getDescription();
+    public void discount(String itemName, double discountPercentage) {
+        if(discountPercentage > 0.0 && discountPercentage < 1.0) {
+            Stock.get(itemName).price = Stock.get(itemName).price * (1 - discountPercentage);
+        }
     }
 }
 
