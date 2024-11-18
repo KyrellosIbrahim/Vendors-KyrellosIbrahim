@@ -50,6 +50,15 @@ class Vending {
         else System.out.println("Sorry, don't know that item");
     }
 
+    /**
+     * sets all items in the vending machine to have 0 stock
+     */
+    void emptyStock() {
+        for (Item item : Stock.values()) {
+            item.stock = 0;
+        }
+    }
+
 }
 
 class Examples {

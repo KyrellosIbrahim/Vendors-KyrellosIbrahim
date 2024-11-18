@@ -28,8 +28,7 @@ public class VendorTest {
     }
     @Test
     void emptyInventory() {
-        (Vending.Stock.get("Candy")).stock = 0;
-        (Vending.Stock.get("Gum")).stock = 0;
+        v.emptyStock();
         assertEquals(0, (Vending.Stock.get("Candy")).stock);
         assertEquals(0, (Vending.Stock.get("Gum")).stock);
     }

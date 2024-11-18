@@ -1,4 +1,5 @@
 class Item {
+    String name;
     double price;
     int stock;
 
@@ -13,5 +14,8 @@ class Item {
 
     void purchase(int amount) {
         this.stock = this.stock - amount;
+    }
+    void setName(String newName) {
+        name = newName;
     }
 }
