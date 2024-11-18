@@ -8,14 +8,11 @@ class Item {
         this.stock = numPieces;
     }
 
-    void restock(int amount) {
+    public void restock(int amount) {
         this.stock = this.stock + amount;
     }
 
-    void purchase(int amount) {
+    public void purchase(int amount) {
         this.stock = this.stock - amount;
-    }
-    void setName(String newName) {
-        name = newName;
     }
 }

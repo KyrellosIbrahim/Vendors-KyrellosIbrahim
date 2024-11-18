@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.LinkedList;
 
 
 /**
@@ -7,6 +8,7 @@ import java.util.HashMap;
  */
 class Vending {
     public static HashMap<String, Item> Stock = new HashMap<>();
+    public HashMap<String, Integer> purchaseHistory;
     private double balance;
     private String vendorName;
 
@@ -15,6 +17,7 @@ class Vending {
         Stock.put("Candy", new Item(1.25, numCandy));
         Stock.put("Gum", new Item(.5, numGum));
         this.balance = 0;
+        this.purchaseHistory = new HashMap<>();
     }
     public String getVendorName() {
         return vendorName;
@@ -48,6 +51,7 @@ class Vending {
             if (balance >= item.price) {
                 item.purchase(1);
                 this.balance = this.balance - item.price;
+                purchaseHistory.put(name, purchaseHistory.getOrDefault(name, 0) + 1);
             }
             else
                 System.out.println("Gimme more money");
@@ -114,6 +118,7 @@ class Vending {
     void removeItem(String itemName) {
         Stock.remove(itemName);
     }
+
 }
 
 class Examples {

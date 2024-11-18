@@ -76,4 +76,11 @@ public class VendorTest {
         v.removeItem("Candy");
         assertFalse(Vending.Stock.containsKey("Candy"));
     }
+    @Test
+    void trackPurchaseHistory() {
+        v.addMoney(1.25);
+        v.select("Candy");
+        assertEquals(1, v.purchaseHistory.size());
+        assertTrue(v.purchaseHistory.containsKey("Candy"));
+    }
 }
