@@ -41,5 +41,10 @@ public class VendorTest {
         assertEquals(preCandyStock + 10, Vending.Stock.get("Candy").stock);
         assertEquals(preGumStock + 5, Vending.Stock.get("Gum").stock);
     }
+    @Test
+    void AddItemWithRestock() {
+        v.addNewOrRestock("Honey Bun", 5, 2.50);
+        assertEquals(5, Vending.Stock.get("Honey Bun").stock);
+    }
 
 }

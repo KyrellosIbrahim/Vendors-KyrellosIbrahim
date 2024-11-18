@@ -59,6 +59,14 @@ class Vending {
         }
     }
 
+    void addNewOrRestock(String itemName, int amount, double price) {
+        if (Stock.containsKey(itemName)) {
+            Stock.get(itemName).restock(amount);
+        }
+        else {
+            Stock.put(itemName, new Item(price, amount));
+        }
+    }
 }
 
 class Examples {
