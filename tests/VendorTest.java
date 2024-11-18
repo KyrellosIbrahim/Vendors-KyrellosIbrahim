@@ -83,4 +83,11 @@ public class VendorTest {
         assertEquals(1, v.purchaseHistory.size());
         assertTrue(v.purchaseHistory.containsKey("Candy"));
     }
+    @Test
+    void checkItemDescription() {
+        Vending.Stock.get("Candy").setDescription("A sweet and delicious treat!");
+        Vending.Stock.get("Gum").setDescription("For those less than fresh moments.");
+        assertEquals("A sweet and delicious treat! \nPrice: 1.25", Vending.Stock.get("Candy").getDescription());
+        assertEquals("For those less than fresh moments. \nPrice: 0.5", Vending.Stock.get("Gum").getDescription());
+    }
 }

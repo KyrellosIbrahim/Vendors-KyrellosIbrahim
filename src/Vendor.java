@@ -118,7 +118,12 @@ class Vending {
     void removeItem(String itemName) {
         Stock.remove(itemName);
     }
-
+    /**
+     * returns the description of the item
+     */
+    String getItemDescription(String itemName) {
+        return Stock.get(itemName).getDescription();
+    }
 }
 
 class Examples {
